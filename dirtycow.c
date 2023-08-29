@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <pthread.h>
 #include <string.h>
+#include <unistd.h>
 
 void *map;
 int file_desc;
@@ -15,7 +16,9 @@ void *madviseThread(void *arg) {
     for (i = 0; i < 100000000; i++) {
         c += madvise(map, 100, MADV_DONTNEED);
     }
-    printf("madvise %d\n\n", c);
+    printf("madvise %d
+
+", c);
 }
 
 void *procselfmemThread(void *arg) {
@@ -31,7 +34,9 @@ void *procselfmemThread(void *arg) {
         c += write(f, str, strlen(str));
     }
     
-    printf("procselfmem %d\n\n", c);
+    printf("procselfmem %d
+
+", c);
 }
 
 int main(int argc,char* argv[]) {
